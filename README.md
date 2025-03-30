@@ -1,7 +1,7 @@
 ﻿# Bank Management System  
 Java Servlet-based role-based banking system with login functionality.
 <br>
-this is my class project :
+This is my class project :
 develop a simple "Bank Management System"  : 
 
  a Bank Management System using a Java Servlet backend and appropriate frontend (HTML + basic CSS + JS) that has role-based Portal with separate Logins, with suitable permissions for different types of roles. It should implement basic operations for each of the users.
