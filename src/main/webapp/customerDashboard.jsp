@@ -1,18 +1,17 @@
-<%@ page contentType="text/html; charset=UTF-8" language="java" %>
+<%@ page session="false" %>
 <!DOCTYPE html>
 <html>
 <head>
     <title>Customer Dashboard</title>
 </head>
 <body>
-    <h2>Welcome, Customer!</h2>
+    <h1>Welcome Customer</h1>
     <ul>
-        <li><a href="viewAccountDetails.jsp">View Account Details</a></li>
-        <li><a href="requestLoan.jsp">Request Loan</a></li>
-        <li><a href="applyFD.jsp">Apply for Fixed Deposit</a></li>
+        <li><a href="#">View Account Details</a></li>
+        <li><a href="#">Request Info Update</a></li>
+        <li><a href="#">Apply for FD / RD</a></li>
+        <li><a href="#">Apply for Loan</a></li>
+        <li><a href="#">Submit Grievance</a></li>
     </ul>
-    <form action="logout" method="post">
-        <button type="submit">Logout</button>
-    </form>
 </body>
 </html>

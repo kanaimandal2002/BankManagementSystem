@@ -9,27 +9,39 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
+import java.sql.*;
 
-@WebServlet("/addStaffServlet")
+@WebServlet("/addStaff")
 public class AddStaffServlet extends HttpServlet {
+	
+    /**
+	 * 
+	 */
 	private static final long serialVersionUID = 1L;
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String username = request.getParameter("username");
-        String password = request.getParameter("password");
-        String role = request.getParameter("role");
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        String staffUsername = request.getParameter("username");
+        String staffPassword = request.getParameter("password");
 
         try (Connection conn = DBConnection.getConnection()) {
-            PreparedStatement ps = conn.prepareStatement("INSERT INTO users (username, password, role) VALUES (?, ?, ?)");
-            ps.setString(1, username);
-            ps.setString(2, password);
-            ps.setString(3, role);
-            ps.executeUpdate();
-            response.sendRedirect("managerDashboard.jsp");  // Redirect back to the manager dashboard after adding staff
+            PreparedStatement ps = conn.prepareStatement(
+                "INSERT INTO users (username, password, role) VALUES (?, ?, 'Staff')"
+            );
+            ps.setString(1, staffUsername);
+            ps.setString(2, staffPassword);
+            int result = ps.executeUpdate();
+
+            if (result > 0) {
+                response.sendRedirect("managerDashboard.jsp?status=success");
+            } else {
+                response.sendRedirect("addStaff.jsp?error=failed");
+            }
+        } catch (SQLIntegrityConstraintViolationException e) {
+            response.sendRedirect("addStaff.jsp?error=exists");
         } catch (Exception e) {
-            e.printStackTrace();
-            response.sendRedirect("managerDashboard.jsp?error=Error Adding Staff");
+            e.printStackTrace(); // optional server log
+            response.sendRedirect("addStaff.jsp?error=exception");
         }
-    }
+	}
 }

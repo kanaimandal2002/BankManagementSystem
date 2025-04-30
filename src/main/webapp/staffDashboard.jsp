@@ -1,18 +1,15 @@
-<%@ page contentType="text/html; charset=UTF-8" language="java" %>
+<%@ page session="false" %>
 <!DOCTYPE html>
 <html>
 <head>
     <title>Staff Dashboard</title>
 </head>
 <body>
-    <h2>Welcome, Staff!</h2>
+    <h1>Welcome Staff</h1>
     <ul>
-        <li><a href="processDeposits.jsp">Process Deposits</a></li>
-        <li><a href="processWithdrawals.jsp">Process Withdrawals</a></li>
-        <li><a href="manageFD.jsp">Manage Fixed Deposits</a></li>
+        <li><a href="#">Process Deposits / Withdrawals</a></li>
+        <li><a href="#">Approve Customer Updates</a></li>
+        <li><a href="#">Handle FD/RD Requests</a></li>
     </ul>
-    <form action="logout" method="post">
-        <button type="submit">Logout</button>
-    </form>
 </body>
 </html>
